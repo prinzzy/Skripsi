@@ -1,4 +1,4 @@
-require('./bootstrap');
-require('./dark');
+import "./bootstrap";
+import "./dark";
 
-require('alpinejs');
+import "alpinejs";
