@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,7 @@ Route::get('/', function () {
     return view('auth.login');
 });
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
+    Route::resource('students', StudentController::class);
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
