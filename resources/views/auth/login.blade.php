@@ -46,6 +46,8 @@
                     up</a>.</p>
             @endif
 
+            <p><a class="font-bold" href="{{route('pendaftaran.index')}}">Pendaftaran</a>.</p>
+
             <!-- @if (Route::has('password.request'))
             <p><a class="font-bold" href="{{route('password.request')}}">Forgot password?</a>.</p>
             @endif -->

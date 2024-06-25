@@ -26,8 +26,9 @@ body {
         .auth-logo {
             margin-bottom: 1rem;
             img {
-                height: 22rem;
-                width: 40rem;
+                max-width: 100%;
+                height: auto;
+                width: auto;
             }
         }
         @media screen and (max-width: 767px) {

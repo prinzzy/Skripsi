@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\PendaftaranController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +32,5 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         })->name('accordion');
     });
 });
+Route::get('/pendaftaran', [PendaftaranController::class, 'index'])->name('pendaftaran.index');
+Route::post('/pendaftaran', [PendaftaranController::class, 'store'])->name('auth.pendaftaran');
