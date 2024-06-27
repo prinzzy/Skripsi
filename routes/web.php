@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\PendaftaranController;
+use App\Http\Controllers\StudentSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,7 @@ Route::get('/', function () {
 });
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::resource('students', StudentController::class);
+    Route::resource('jadwal', StudentSessionController::class);
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
