@@ -4,7 +4,7 @@
         </div>
     </x-slot>
     <div class="container">
-        <h1>Student List</h1>
+        <h1>Data Murid</h1>
         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createStudentModal">Add Student</button>
         <br><br>
         @if ($message = Session::get('success'))
@@ -45,7 +45,7 @@
                         <form action="{{ route('students.destroy', $student->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this student?')">Delete</button>
+                            <button type="button" class="btn btn-danger delete-btn">Delete</button>
                         </form>
                     </td>
                 </tr>
@@ -170,12 +170,29 @@
     </div>
 </x-app-layout>
 <script>
-    console.log('Script loaded');
     $(document).ready(function() {
         $('#studentsTable').DataTable({
             "pagingType": "full_numbers", // Enable pagination with all features
             "searching": true, // Enable search box
             // Add other configuration options as needed
+        });
+
+        $('.delete-btn').on('click', function(e) {
+            e.preventDefault();
+            var form = $(this).closest('form');
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            })
         });
     });
 </script>

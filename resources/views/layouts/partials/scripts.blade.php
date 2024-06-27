@@ -6,6 +6,7 @@
 <script src="{{ asset('/js/datatables.js') }}"></script>
 <script src="{{ asset('/js/datatables.min.js') }}"></script>
 <script src="{{ asset('/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('/vendors/sweetalert2/sweetalert2.all.min.js') }}"></script>
 
 @livewireScripts
 <script src="{{ asset('/js/main.js') }}"></script>
