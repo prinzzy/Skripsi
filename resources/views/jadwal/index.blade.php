@@ -23,8 +23,14 @@
                     <th>Month</th>
                     <th>Week</th>
                     <th>Day of Week</th>
-                    <th>Attendance Status</th>
-                    <th>Attendance Date</th>
+                    <th>Attendance Status 1</th>
+                    <th>Attendance Date 1</th>
+                    <th>Attendance Status 2</th>
+                    <th>Attendance Date 2</th>
+                    <th>Attendance Status 3</th>
+                    <th>Attendance Date 3</th>
+                    <th>Attendance Status 4</th>
+                    <th>Attendance Date 4</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -36,8 +42,14 @@
                     <td>{{ $session->month }}</td>
                     <td>{{ $session->week }}</td>
                     <td>{{ $session->day_of_week }}</td>
-                    <td>{{ $session->attendance_status }}</td>
-                    <td>{{ $session->attendance_date }}</td>
+                    <td>{{ $session->attendance_status1 }}</td>
+                    <td>{{ $session->attendance_date1 }}</td>
+                    <td>{{ $session->attendance_status2 }}</td>
+                    <td>{{ $session->attendance_date2 }}</td>
+                    <td>{{ $session->attendance_status3 }}</td>
+                    <td>{{ $session->attendance_date3 }}</td>
+                    <td>{{ $session->attendance_status4 }}</td>
+                    <td>{{ $session->attendance_date4 }}</td>
                     <td>
                         <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#editSessionModal-{{ $session->id }}">Edit</button>
                         <form class="delete-form" action="{{ route('jadwal.destroy', $session->id) }}" method="POST" style="display:inline;">
@@ -78,15 +90,48 @@
                                         <input type="text" name="day_of_week" class="form-control" value="{{ $session->day_of_week }}" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="attendance_status" class="form-label">Attendance Status</label>
-                                        <select name="attendance_status" class="form-control" required>
-                                            <option value="Present" {{ $session->attendance_status == 'Present' ? 'selected' : '' }}>Present</option>
-                                            <option value="Absent" {{ $session->attendance_status == 'Absent' ? 'selected' : '' }}>Absent</option>
+                                        <label for="attendance_status1" class="form-label">Attendance Status 1</label>
+                                        <select name="attendance_status1" class="form-control" required>
+                                            <option value="Present" {{ $session->attendance_status1 == 'Present' ? 'selected' : '' }}>Present</option>
+                                            <option value="Absent" {{ $session->attendance_status1 == 'Absent' ? 'selected' : '' }}>Absent</option>
                                         </select>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="attendance_date" class="form-label">Attendance Date</label>
-                                        <input type="date" name="attendance_date" class="form-control" value="{{ $session->attendance_date }}" required>
+                                        <label for="attendance_date1" class="form-label">Attendance Date 1</label>
+                                        <input type="date" name="attendance_date1" class="form-control" value="{{ $session->attendance_date1 }}" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="attendance_status2" class="form-label">Attendance Status 2</label>
+                                        <select name="attendance_status2" class="form-control" required>
+                                            <option value="Present" {{ $session->attendance_status2 == 'Present' ? 'selected' : '' }}>Present</option>
+                                            <option value="Absent" {{ $session->attendance_status2 == 'Absent' ? 'selected' : '' }}>Absent</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="attendance_date2" class="form-label">Attendance Date 2</label>
+                                        <input type="date" name="attendance_date2" class="form-control" value="{{ $session->attendance_date2 }}" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="attendance_status3" class="form-label">Attendance Status 3</label>
+                                        <select name="attendance_status3" class="form-control" required>
+                                            <option value="Present" {{ $session->attendance_status3 == 'Present' ? 'selected' : '' }}>Present</option>
+                                            <option value="Absent" {{ $session->attendance_status3 == 'Absent' ? 'selected' : '' }}>Absent</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="attendance_date3" class="form-label">Attendance Date 3</label>
+                                        <input type="date" name="attendance_date3" class="form-control" value="{{ $session->attendance_date3 }}" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="attendance_status4" class="form-label">Attendance Status 4</label>
+                                        <select name="attendance_status4" class="form-control" required>
+                                            <option value="Present" {{ $session->attendance_status4 == 'Present' ? 'selected' : '' }}>Present</option>
+                                            <option value="Absent" {{ $session->attendance_status4 == 'Absent' ? 'selected' : '' }}>Absent</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="attendance_date4" class="form-label">Attendance Date 4</label>
+                                        <input type="date" name="attendance_date4" class="form-control" value="{{ $session->attendance_date4 }}" required>
                                     </div>
 
                                     <button type="submit" class="btn btn-primary">Update</button>
@@ -128,15 +173,48 @@
                             <input type="text" name="day_of_week" class="form-control" required>
                         </div>
                         <div class="mb-3">
-                            <label for="attendance_status" class="form-label">Attendance Status</label>
-                            <select name="attendance_status" class="form-control" required>
+                            <label for="attendance_status1" class="form-label">Attendance Status 1</label>
+                            <select name="attendance_status1" class="form-control" required>
                                 <option value="Present">Present</option>
                                 <option value="Absent">Absent</option>
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="attendance_date" class="form-label">Attendance Date</label>
-                            <input type="date" name="attendance_date" class="form-control" required>
+                            <label for="attendance_date1" class="form-label">Attendance Date 1</label>
+                            <input type="date" name="attendance_date1" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="attendance_status2" class="form-label">Attendance Status 2</label>
+                            <select name="attendance_status2" class="form-control" required>
+                                <option value="Present">Present</option>
+                                <option value="Absent">Absent</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="attendance_date2" class="form-label">Attendance Date 2</label>
+                            <input type="date" name="attendance_date2" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="attendance_status3" class="form-label">Attendance Status 3</label>
+                            <select name="attendance_status3" class="form-control" required>
+                                <option value="Present">Present</option>
+                                <option value="Absent">Absent</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="attendance_date3" class="form-label">Attendance Date 3</label>
+                            <input type="date" name="attendance_date3" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="attendance_status4" class="form-label">Attendance Status 4</label>
+                            <select name="attendance_status4" class="form-control" required>
+                                <option value="Present">Present</option>
+                                <option value="Absent">Absent</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="attendance_date4" class="form-label">Attendance Date 4</label>
+                            <input type="date" name="attendance_date4" class="form-control" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Add</button>
                     </form>
