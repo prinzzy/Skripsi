@@ -24,6 +24,12 @@ class StudentSession extends Model
         'attendance_status3',
         'attendance_date3',
         'attendance_status4',
-        'attendance_date4'
+        'attendance_date4',
+        'user_id',
     ];
+        
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

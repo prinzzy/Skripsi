@@ -54,4 +54,19 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function students()
+    {
+        return $this->hasMany(Student::class);
+    }
+
+    public function parents()
+    {
+        return $this->hasMany(Parent::class);
+    }
+
+    public function studentSessions()
+    {
+        return $this->hasMany(StudentSession::class);
+    }
 }

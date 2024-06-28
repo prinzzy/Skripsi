@@ -1,15 +1,15 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\StudentSession;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StudentSessionController extends Controller
 {
     public function index()
     {
-        $sessions = StudentSession::all();
+        $sessions = StudentSession::where('user_id', Auth::id())->get();
         return view('jadwal.index', compact('sessions'));
     }
 
@@ -35,23 +35,27 @@ class StudentSessionController extends Controller
             'attendance_date4' => 'required|date',
         ]);
 
+        $request->merge(['user_id' => Auth::id()]);
+
         StudentSession::create($request->all());
 
         return redirect()->route('jadwal.index')->with('success', 'Session created successfully.');
     }
 
-    public function show(StudentSession $session)
-    {
-        return view('jadwal.show', compact('session'));
-    }
-
     public function edit(StudentSession $session)
     {
+        if ($session->user_id !== Auth::id()) {
+            abort(403);
+        }
         return view('jadwal.edit', compact('session'));
     }
 
     public function update(Request $request, StudentSession $session)
     {
+        if ($session->user_id !== Auth::id()) {
+            abort(403);
+        }
+
         $request->validate([
             'year' => 'required|integer',
             'month' => 'required|string',
@@ -74,6 +78,10 @@ class StudentSessionController extends Controller
 
     public function destroy(StudentSession $session)
     {
+        if ($session->user_id !== Auth::id()) {
+            abort(403);
+        }
+
         $session->delete();
 
         return redirect()->route('jadwal.index')->with('success', 'Session deleted successfully.');
