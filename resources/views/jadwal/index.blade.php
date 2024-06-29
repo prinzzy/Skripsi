@@ -15,7 +15,7 @@
 
         <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#createSessionModal">Tambah Jadwal</button>
 
-        <table id="sessionsTable" class="table table-bordered">
+        <table id="sessionsTable" class="table table-hover">
             <thead>
                 <tr>
                     <th>ID</th>

@@ -12,10 +12,9 @@
             {{ $message }}
         </div>
         @endif
-        <table id="studentsTable" class="table table-bordered">
+        <table id="studentsTable" class="table table-hover">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Nama</th>
                     <th>Sekolah</th>
                     <th>Tanggal Lahir</th>
@@ -23,13 +22,14 @@
                     <th>Jadwal Kelas</th>
                     <th>Level</th>
                     <th>No HP</th>
+                    <th>Nama Ortu</th>
+                    <th>Alamat</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($students as $student)
                 <tr>
-                    <td>{{ $student->id }}</td>
                     <td>{{ $student->nama }}</td>
                     <td>{{ $student->sekolah }}</td>
                     <td>{{ $student->tanggal_lahir }}</td>
@@ -37,6 +37,8 @@
                     <td>{{ $student->jadwal_kelas }}</td>
                     <td>{{ $student->level }}</td>
                     <td>{{ $student->no_hp }}</td>
+                    <td>{{ $student->nama_orangtua }}</td>
+                    <td>{{ $student->alamat }}</td>
                     <td>
                         <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#showStudentModal-{{ $student->id }}">Show</button>
                         <br>
@@ -66,7 +68,9 @@
                                 <p><strong>Tanggal Mulai:</strong> {{ $student->tanggal_mulai }}</p>
                                 <p><strong>Jadwal Kelas:</strong> {{ $student->jadwal_kelas }}</p>
                                 <p><strong>Level:</strong> {{ $student->level }}</p>
-                                <p><strong>No HP:</strong> {{ $student->no_hp }}</p>
+                                <p><strong>No Hp:</strong> {{ $student->no_hp }}</p>
+                                <p><strong>Nama Ortu:</strong> {{ $student->nama_orangtua }}</p>
+                                <p><strong>Alamat:</strong> {{ $student->alamat }}</p>
                             </div>
                         </div>
                     </div>
@@ -111,6 +115,14 @@
                                     <div class="mb-3">
                                         <label for="no_hp-{{ $student->id }}" class="form-label">No HP</label>
                                         <input type="text" name="no_hp" class="form-control" id="no_hp-{{ $student->id }}" value="{{ $student->no_hp }}" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="nama_orangtua-{{ $student->id }}" class="form-label">Nama Ortu</label>
+                                        <input type="text" name="no_hp" class="form-control" id="nama_orangtua-{{ $student->id }}" value="{{ $student->nama_orangtua }}" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="alamat-{{ $student->id }}" class="form-label">Alamat</label>
+                                        <input type="text" name="alamat" class="form-control" id="alamat-{{ $student->id }}" value="{{ $student->alamat }}" required>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Update</button>
                                 </form>
@@ -161,6 +173,14 @@
                         <div class="mb-3">
                             <label for="no_hp" class="form-label">No HP</label>
                             <input type="text" name="no_hp" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nama_orangtua" class="form-label">Nama Ortu</label>
+                            <input type="text" name="nama_orangtua" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="alamat" class="form-label">alamat</label>
+                            <input type="text" name="alamat" class="form-control" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Add</button>
                     </form>

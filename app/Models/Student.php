@@ -20,6 +20,8 @@ class Student extends Model
         'level',
         'no_hp',
         'user_id',
+        'nama_orangtua',
+        'alamat',
     ];
 
     public function user()
