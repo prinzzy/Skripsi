@@ -12,7 +12,7 @@
         <x-maz-sidebar-sub-item name="Ubah Jadwal Pengajar" :link="route('components.alert')"></x-maz-sidebar-sub-item>
     </x-maz-sidebar-item>
     <x-maz-sidebar-item name="Pembayaran" icon="bi bi-stack">
-        <x-maz-sidebar-sub-item name="Data Pembayaran" :link="route('components.accordion')"></x-maz-sidebar-sub-item>
+        <x-maz-sidebar-sub-item name="Data Pembayaran" :link="route('payments.index')"></x-maz-sidebar-sub-item>
     </x-maz-sidebar-item>
 
 </x-maz-sidebar>

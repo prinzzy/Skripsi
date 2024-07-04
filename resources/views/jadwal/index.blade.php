@@ -19,6 +19,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Student Name</th>
                     <th>Year</th>
                     <th>Month</th>
                     <th>Week</th>
@@ -38,6 +39,7 @@
                 @foreach ($sessions as $session)
                 <tr>
                     <td>{{ $session->id }}</td>
+                    <td>{{ $session->nama }}</td>
                     <td>{{ $session->year }}</td>
                     <td>{{ $session->month }}</td>
                     <td>{{ $session->week }}</td>
@@ -59,7 +61,6 @@
                         </form>
                     </td>
                 </tr>
-
                 <!-- Edit Session Modal -->
                 <div class="modal fade" id="editSessionModal-{{ $session->id }}" tabindex="-1" aria-labelledby="editSessionModalLabel-{{ $session->id }}" aria-hidden="true">
                     <div class="modal-dialog">
@@ -72,7 +73,14 @@
                                 <form action="{{ route('jadwal.update', $session->id) }}" method="POST">
                                     @csrf
                                     @method('PUT')
-
+                                    <div class="mb-3">
+                                        <label for="student_id" class="form-label">Student</label>
+                                        <select name="student_id" class="form-control" required>
+                                            @foreach ($students as $student)
+                                            <option value="{{ $student->id }}" {{ $session->student_id == $student->id ? 'selected' : '' }}>{{ $student->nama }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                     <div class="mb-3">
                                         <label for="year" class="form-label">Year</label>
                                         <input type="text" name="year" class="form-control" value="{{ $session->year }}" required>
@@ -133,7 +141,6 @@
                                         <label for="attendance_date4" class="form-label">Attendance Date 4</label>
                                         <input type="date" name="attendance_date4" class="form-control" value="{{ $session->attendance_date4 }}" required>
                                     </div>
-
                                     <button type="submit" class="btn btn-primary">Update</button>
                                 </form>
                             </div>
@@ -150,12 +157,20 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="createSessionModalLabel">Add Session</h5>
+                    <h5 class="modal-title" id="createSessionModalLabel">Create Session</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form action="{{ route('jadwal.store') }}" method="POST">
                         @csrf
+                        <div class="mb-3">
+                            <label for="student_id" class="form-label">Student</label>
+                            <select name="student_id" class="form-control" required>
+                                @foreach ($students as $student)
+                                <option value="{{ $student->id }}">{{ $student->nama }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="mb-3">
                             <label for="year" class="form-label">Year</label>
                             <input type="text" name="year" class="form-control" required>
@@ -216,7 +231,7 @@
                             <label for="attendance_date4" class="form-label">Attendance Date 4</label>
                             <input type="date" name="attendance_date4" class="form-control" required>
                         </div>
-                        <button type="submit" class="btn btn-primary">Add</button>
+                        <button type="submit" class="btn btn-primary">Create</button>
                     </form>
                 </div>
             </div>

@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\StudentSession;
+use App\Models\TuitionPayment;
 
 class Student extends Model
 {
@@ -24,8 +26,12 @@ class Student extends Model
         'alamat',
     ];
 
-    public function user()
+    public function sessions()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(StudentSession::class);
+    }
+    public function tuitionPayments()
+    {
+        return $this->hasMany(TuitionPayment::class);
     }
 }
