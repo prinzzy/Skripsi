@@ -30,10 +30,6 @@
                     <input type="text" class="form-control" id="namaSekolah" name="nama_sekolah">
                 </div>
                 <div class="form-group">
-                    <label for="tanggalLahir">Tanggal Lahir</label>
-                    <input type="date" class="form-control" id="tanggalLahir" name="tanggal_lahir" required>
-                </div>
-                <div class="form-group">
                     <label for="tanggalMulai">Tanggal Mulai Robotic Kids</label>
                     <input type="date" class="form-control" id="tanggalMulai" name="tanggal_mulai" required>
                 </div>

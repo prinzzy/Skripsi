@@ -16,12 +16,7 @@ class StudentController extends Controller
     public function show($id)
     {
         $student = Student::findOrFail($id);
-        return view('students.show', compact('student'));
-    }
-
-    public function create()
-    {
-        return view('students.create');
+        return response()->json($student);
     }
 
     public function store(Request $request)
@@ -29,7 +24,6 @@ class StudentController extends Controller
         $request->validate([
             'nama' => 'required',
             'sekolah' => 'required',
-            'tanggal_lahir' => 'required|date',
             'tanggal_mulai' => 'required|date',
             'jadwal_kelas' => 'required',
             'level' => 'required',
@@ -43,18 +37,12 @@ class StudentController extends Controller
         return redirect()->route('students.index')->with('success', 'Student created successfully.');
     }
 
-    public function edit($id)
-    {
-        $student = Student::findOrFail($id);
-        return view('students.edit', compact('student'));
-    }
-
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $request->validate([
+            'id' => 'required|exists:student,id',
             'nama' => 'required',
             'sekolah' => 'required',
-            'tanggal_lahir' => 'required|date',
             'tanggal_mulai' => 'required|date',
             'jadwal_kelas' => 'required',
             'level' => 'required',
@@ -63,7 +51,7 @@ class StudentController extends Controller
             'alamat' => 'required',
         ]);
 
-        $student = Student::findOrFail($id);
+        $student = Student::findOrFail($request->id);
         $student->update($request->all());
 
         return redirect()->route('students.index')->with('success', 'Student updated successfully.');

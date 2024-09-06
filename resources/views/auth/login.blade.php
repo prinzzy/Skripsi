@@ -19,15 +19,13 @@
         <form action="{{ route('login') }}" method="POST">
             @csrf
             <div class="form-group position-relative has-icon-left mb-4">
-                <input class="form-control form-control-xl" type="email" name="email" placeholder="Email"
-                    value="{{ old('email') }}">
+                <input class="form-control form-control-xl" type="email" name="email" placeholder="Email" value="{{ old('email') }}">
                 <div class="form-control-icon">
                     <i class="bi bi-person"></i>
                 </div>
             </div>
             <div class="form-group position-relative has-icon-left mb-4">
-                <input type="password" class="form-control form-control-xl" name="password" placeholder="Password"
-                    placeholder="Password">
+                <input type="password" class="form-control form-control-xl" name="password" placeholder="Password" placeholder="Password">
                 <div class="form-control-icon">
                     <i class="bi bi-shield-lock"></i>
                 </div>
@@ -42,11 +40,13 @@
         </form>
         <div class="text-center mt-5 text-lg fs-4">
             @if (Route::has('register'))
-            <p class="text-gray-600">Don't have an account? <a href="{{route('register')}}" class="font-bold">Sign
-                    up</a>.</p>
+            <p class="text-gray-600">Klik Untuk Pendaftaran <br>
+                <a href="{{route('register')}}" class="font-bold">Daftar.
+                </a>
+            </p>
             @endif
 
-            <p><a class="font-bold" href="{{route('pendaftaran.index')}}">Pendaftaran</a>.</p>
+            <!-- <p><a class="font-bold" href="{{route('pendaftaran.index')}}">Pendaftaran</a>.</p> -->
 
             <!-- @if (Route::has('password.request'))
             <p><a class="font-bold" href="{{route('password.request')}}">Forgot password?</a>.</p>

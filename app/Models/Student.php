@@ -14,17 +14,27 @@ class Student extends Model
     protected $table = 'student';
 
     protected $fillable = [
+        'user_id',
         'nama',
         'sekolah',
         'tanggal_lahir',
         'tanggal_mulai',
         'jadwal_kelas',
         'level',
+        'nama_sekolah',
+        'pilih_les',
+        'kelas',
         'no_hp',
         'user_id',
         'nama_orangtua',
         'alamat',
     ];
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function sessions()
     {
